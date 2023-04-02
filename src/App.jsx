@@ -15,18 +15,17 @@ const App = () => {
     setIsOpen(true);
     const options = {
       method:'POST',
-      headers:{
-        'Content-Type':'application/json',
-        Authorization: `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`
+      headers: {
+        'content-type': 'application/json',
+        'X-RapidAPI-Key': import.meta.env.VITE_RAPID_API_KEY,
+        'X-RapidAPI-Host': import.meta.env.VITE_RAPID_API_HOST
       },
       body: JSON.stringify({
         model:'text-davinci-003',
         prompt:'Extract keywords from this text. Make the first letter of each word uppercase and seperate with commas\n\n' + text + '',
         temperature: 0.5,
         max_tokens: 60,
-        top_p: 1.0,
-        frequency_penalty: 0.8,
-        presence_penalty: 0.0,
+        frequency_penalty: 0.8
       })
     }
 
